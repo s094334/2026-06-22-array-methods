@@ -285,3 +285,36 @@ console.log(sortedByPriority); // 按照 priority 高到低排序
 const reversePriority = [...sortedByPriority].reverse();
 
 console.log(reversePriority); // 按照 priority 低到高排序
+
+// ==========================================
+// 編號：11
+// 方法名稱：Array.prototype.indexOf()
+// ==========================================
+// 關鍵字（一句話說明）：給定元素在陣列中可以找到的第一個索引，如果不存在則傳回 -1
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：indexOf(searchElement, fromIndex)
+// 1. searchElement 要尋找的數組元素
+// 2. fromIndex（Optional）從陣列的第幾個位置開始搜尋，用於陣列有重複元素或想找某區間
+// 回傳值：找到的第一個索引值，如果不存在則傳回 -1
+// ==========================================
+
+const reporters = ['Janet', 'Hew', 'Chelsea', 'Chelsea', 'Chelsea', 'Janet', 'Janet', 'Hew', 'Chelsea', 'Hew']
+const findIndexof = reporters.indexOf('Chelsea');
+
+console.log(findIndexof); // 2
+
+// ==========================================
+// 編號：12
+// 方法名稱：Array.prototype.lastIndexOf()
+// ==========================================
+// 關鍵字（一句話說明）：給定元素在陣列中可以找到的最後一個索引，如果不存在則傳回 -1
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：lastIndexOf(searchElement, fromIndex)
+// 1. searchElement 要尋找的數組元素
+// 2. fromIndex（Optional）從陣列的第幾個位置開始搜尋，用於陣列有重複元素或想找某區間
+// 回傳值：找到的第一個索引值，如果不存在則傳回 -1
+// ==========================================
+
+const findLastIndexof = reporters.lastIndexOf('Chelsea', 5);
+
+console.log(findLastIndexof); // 4
