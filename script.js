@@ -124,6 +124,7 @@ let bugReports = [
 const firstBugTags = ['公式錯誤', 'VLOOKUP', '資料驗證'];
 const shiftTag = firstBugTags.shift();
 
+console.log(`===1. Array.prototype.shift()===`)
 console.log(firstBugTags); // ['VLOOKUP', '資料驗證']
 console.log(shiftTag); // 公式錯誤
 
@@ -140,6 +141,7 @@ console.log(shiftTag); // 公式錯誤
 const secondBugTags = ['Render', 'UI'];
 const unshiftTag = secondBugTags.unshift('Safari', 'mobile');
 
+console.log(`===2. Array.prototype.unshift()===`)
 console.log(secondBugTags); // ['Safari', 'mobile', 'Render', 'UI']
 console.log(unshiftTag); // 4
 
@@ -156,6 +158,7 @@ console.log(unshiftTag); // 4
 const thirdBugTags = ['公式錯誤', 'SUMIF', '計算邏輯'];
 const popTag = thirdBugTags.pop();
 
+console.log(`===3. Array.prototype.pop()===`)
 console.log(thirdBugTags); // ['公式錯誤', 'SUMIF']
 console.log(popTag); // 計算邏輯
 
@@ -172,7 +175,8 @@ console.log(popTag); // 計算邏輯
 const fourthBugTags = ['公式錯誤', 'SUMIF', '計算邏輯'];
 const pushTag = fourthBugTags.push('背景底色');
 
-console.log(fourthBugTags); // ['公式錯誤', 'SUMIF', '計算邏輯', 背景底色']
+console.log(`===4. Array.prototype.push()===`)
+console.log(fourthBugTags); // ['公式錯誤', 'SUMIF', '計算邏輯', '背景底色']
 console.log(pushTag); // 4
 
 // ==========================================
@@ -190,12 +194,13 @@ console.log(pushTag); // 4
 
 const fifthBugTags = ['Render顯示', '日期格式', '資料驗證'];
 const spliceTag = fifthBugTags.splice(2, 1);
+console.log(`===5. Array.prototype.splice()===`)
 console.log(fifthBugTags); // ['Render顯示', '日期格式']
 console.log(spliceTag); // ['資料驗證']
 
 const spliceAddTag = fifthBugTags.splice(0, 1, 'Render', '資料驗證');
 console.log(fifthBugTags); // ['Render', '資料驗證', '日期格式']
-console.log(spliceAddTag); // ['Render 顯示']
+console.log(spliceAddTag); // ['Render顯示']
 
 // ==========================================
 // 編號：06
@@ -211,6 +216,7 @@ console.log(spliceAddTag); // ['Render 顯示']
 const sixthBugTags = bugReports[5].tags;
 const joinTag = sixthBugTags.join('、');
 
+console.log(`===6. Array.prototype.join()===`)
 console.log(sixthBugTags); // ['Render顯示', '合併單元格', '列印']
 console.log(`標籤包含：${joinTag}`); // 標籤包含：Render顯示、合併單元格、列印
 
@@ -234,6 +240,7 @@ const unfixedCount = bugReports.reduce((acc, object) => {
     return object.fixed === false ? acc + 1 : acc;
 }, 0);
 
+console.log(`===7. Array.prototype.reduce()===`)
 console.log(unfixedCount);
 
 // ==========================================
@@ -250,6 +257,7 @@ const latestFirstSummary = bugReports.reduceRight((acc, object) => {
     return acc + object.bugId + ' ';
 }, '');
 
+console.log(`===8. Array.prototype.reduceRight()===`)
 console.log(latestFirstSummary); // BUG110 BUG109 BUG108 BUG107 BUG106 BUG105 BUG104 BUG103 BUG102 BUG101 
 
 
@@ -270,6 +278,7 @@ const sortedByPriority = bugReports.sort((a, b) => {
     return priorityOrder[a.priority] - priorityOrder[b.priority];
 });
 
+console.log(`===9. Array.prototype.sort()===`)
 console.log(sortedByPriority); // 按照 priority 高到低排序
 
 // ==========================================
@@ -284,6 +293,7 @@ console.log(sortedByPriority); // 按照 priority 高到低排序
 
 const reversePriority = [...sortedByPriority].reverse();
 
+console.log(`===10. Array.prototype.reverse()===`)
 console.log(reversePriority); // 按照 priority 低到高排序
 
 // ==========================================
@@ -301,6 +311,7 @@ console.log(reversePriority); // 按照 priority 低到高排序
 const reporters = ['Janet', 'Hew', 'Chelsea', 'Chelsea', 'Chelsea', 'Janet', 'Janet', 'Hew', 'Chelsea', 'Hew']
 const findIndexof = reporters.indexOf('Chelsea');
 
+console.log(`===11. Array.prototype.indexOf()===`)
 console.log(findIndexof); // 2
 
 // ==========================================
@@ -312,11 +323,12 @@ console.log(findIndexof); // 2
 // 參數說明（傳入的數量或用途）：lastIndexOf(searchElement, fromIndex)
 // 1. searchElement 要尋找的數組元素
 // 2. fromIndex（Optional）從陣列的第幾個位置開始搜尋，用於陣列有重複元素或想找某區間
-// 回傳值：找到的第一個索引值，如果不存在則傳回 -1
+// 回傳值：由後往前找到的第一個（即最後一個）索引值，如果不存在則傳回 -1
 // ==========================================
 
 const findLastIndexof = reporters.lastIndexOf('Chelsea', 5);
 
+console.log(`===12. Array.prototype.lastIndexOf()===`)
 console.log(findLastIndexof); // 4
 
 // ==========================================
@@ -331,6 +343,7 @@ console.log(findLastIndexof); // 4
 
 const lengthBugReports = bugReports.length;
 
+console.log(`===13. length===`)
 console.log(lengthBugReports); // 10
 
 // ==========================================
@@ -352,6 +365,7 @@ const seriousBug = bugReports.some(bug => {
     return bug.severity === 'Critical' && bug.fixed === false;
 });
 
+console.log(`===14. Array.prototype.some()===`)
 console.log(seriousBug); // true
 
 // ==========================================
@@ -372,6 +386,8 @@ console.log(seriousBug); // true
 const allFixed = bugReports.every(bug => {
     return bug.fixed === true;
 });
+
+console.log(`===15. Array.prototype.every()===`)
 console.log(allFixed); // false
 
 // ==========================================
@@ -392,7 +408,8 @@ console.log(allFixed); // false
 const allBugId = [];
 bugReports.forEach(item => allBugId.push(item.bugId));
 
-console.log(`16. forEach(): ${allBugId}`); // ['BUG102', 'BUG103', 'BUG107', 'BUG110', 'BUG101', 'BUG105', 'BUG108', 'BUG109', 'BUG104', 'BUG106']
+console.log(`===16. Array.prototype.forEach()===`)
+console.log(allBugId); //  ['BUG102', 'BUG103', 'BUG107', 'BUG110', 'BUG101', 'BUG105', 'BUG108', 'BUG109', 'BUG104', 'BUG106']
 
 // ==========================================
 // 編號：17
@@ -413,6 +430,7 @@ const idAndHighPriority = bugReports
     .filter(item => item.priority === 'High')
     .map(item => item.bugId + ':' + item.priority);
 
+console.log(`===17. Array.prototype.map()===`)
 console.log(idAndHighPriority); // ['BUG102:High', 'BUG103:High', 'BUG107:High', 'BUG110:High']
 
 // ==========================================
@@ -421,8 +439,11 @@ console.log(idAndHighPriority); // ['BUG102:High', 'BUG103:High', 'BUG107:High',
 // ==========================================
 // 關鍵字（一句話說明）：建立一個全新的陣列（淺拷貝），把符合條件的元素放進去
 // 是否改變原陣列（mutate）：不會
-// 參數說明（傳入的數量或用途）：slice(start, end)
+// 參數說明（傳入的數量或用途）：filter(callbackFn, thisArg)
 // 1. callbackFn 用於對數組中的每個元素執行的函數
+// - element 正在被測試的陣列中的元素
+// - index 這個元素在陣列中的索引
+// - array 進行操作的那個陣列
 // 2. thisArg（Optional）this 執行時要使用的值
 // 回傳值：array (回傳值組成的陣列)
 // ==========================================
@@ -431,6 +452,7 @@ const completedBug = bugReports
     .filter(item => item.closedDate !== null)
     .map(item => item.bugId + '(' + item.priority + ')');
 
+console.log(`===18. Array.prototype.filter()===`)
 console.log(completedBug); // ['BUG102(High)', 'BUG107(High)', 'BUG108(Medium)', 'BUG104(Low)']
 
 // ==========================================
@@ -450,6 +472,7 @@ const sliceCompletedBug = bugReports
     .map(item => item.bugId + '(' + item.priority + ')')
     .slice(0, 2);
 
+console.log(`===19. Array.prototype.slice()===`)
 console.log(sliceCompletedBug); // ['BUG102(High)', 'BUG107(High)']
 
 // ==========================================
@@ -467,5 +490,6 @@ const allTags = bugReports
     .reduce((acc, item) => {
         return acc.concat(item.tags)
     }, []);
-    
+
+console.log(`===20. Array.prototype.concat()===`)
 console.log(allTags) // 全部的 tags
