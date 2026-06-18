@@ -318,3 +318,17 @@ console.log(findIndexof); // 2
 const findLastIndexof = reporters.lastIndexOf('Chelsea', 5);
 
 console.log(findLastIndexof); // 4
+
+// ==========================================
+// 編號：13
+// 方法名稱：length
+// ==========================================
+// 關鍵字（一句話說明）：設置或回傳該陣列中的元素數
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：無
+// 回傳值：number（回傳陣列的長度）
+// ==========================================
+
+const lengthBugReports = bugReports.length;
+
+console.log(lengthBugReports); // 10
