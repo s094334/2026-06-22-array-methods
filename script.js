@@ -195,11 +195,11 @@ console.log(pushTag); // 4
 const fifthBugTags = ['Render顯示', '日期格式', '資料驗證'];
 const spliceTag = fifthBugTags.splice(2, 1);
 console.log(`===5. Array.prototype.splice()===`)
-console.log(fifthBugTags); // ['Render顯示', '日期格式']
+console.table(fifthBugTags); // ['Render顯示', '日期格式']
 console.log(spliceTag); // ['資料驗證']
 
 const spliceAddTag = fifthBugTags.splice(0, 1, 'Render', '資料驗證');
-console.log(fifthBugTags); // ['Render', '資料驗證', '日期格式']
+console.table(fifthBugTags); // ['Render', '資料驗證', '日期格式']
 console.log(spliceAddTag); // ['Render顯示']
 
 // ==========================================
@@ -279,7 +279,7 @@ const sortedByPriority = bugReports.sort((a, b) => {
 });
 
 console.log(`===9. Array.prototype.sort()===`)
-console.log(sortedByPriority); // 按照 priority 高到低排序
+console.table(sortedByPriority); // 按照 priority 高到低排序
 
 // ==========================================
 // 編號：10
@@ -294,7 +294,7 @@ console.log(sortedByPriority); // 按照 priority 高到低排序
 const reversePriority = [...sortedByPriority].reverse();
 
 console.log(`===10. Array.prototype.reverse()===`)
-console.log(reversePriority); // 按照 priority 低到高排序
+console.table(reversePriority); // 按照 priority 低到高排序
 
 // ==========================================
 // 編號：11
@@ -431,7 +431,7 @@ const idAndHighPriority = bugReports
     .map(item => item.bugId + ':' + item.priority);
 
 console.log(`===17. Array.prototype.map()===`)
-console.log(idAndHighPriority); // ['BUG102:High', 'BUG103:High', 'BUG107:High', 'BUG110:High']
+console.table(idAndHighPriority); // ['BUG102:High', 'BUG103:High', 'BUG107:High', 'BUG110:High']
 
 // ==========================================
 // 編號：18
@@ -453,7 +453,7 @@ const completedBug = bugReports
     .map(item => item.bugId + '(' + item.priority + ')');
 
 console.log(`===18. Array.prototype.filter()===`)
-console.log(completedBug); // ['BUG102(High)', 'BUG107(High)', 'BUG108(Medium)', 'BUG104(Low)']
+console.table(completedBug); // ['BUG102(High)', 'BUG107(High)', 'BUG108(Medium)', 'BUG104(Low)']
 
 // ==========================================
 // 編號：19
@@ -473,7 +473,7 @@ const sliceCompletedBug = bugReports
     .slice(0, 2);
 
 console.log(`===19. Array.prototype.slice()===`)
-console.log(sliceCompletedBug); // ['BUG102(High)', 'BUG107(High)']
+console.table(sliceCompletedBug); // ['BUG102(High)', 'BUG107(High)']
 
 // ==========================================
 // 編號：20
@@ -492,4 +492,4 @@ const allTags = bugReports
     }, []);
 
 console.log(`===20. Array.prototype.concat()===`)
-console.log(allTags) // 全部的 tags
+console.table(allTags) // 全部的 tags
