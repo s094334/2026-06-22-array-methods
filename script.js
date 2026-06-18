@@ -196,3 +196,92 @@ console.log(spliceTag); // ['資料驗證']
 const spliceAddTag = fifthBugTags.splice(0, 1, 'Render', '資料驗證');
 console.log(fifthBugTags); // ['Render', '資料驗證', '日期格式']
 console.log(spliceAddTag); // ['Render 顯示']
+
+// ==========================================
+// 編號：06
+// 方法名稱：Array.prototype.join()
+// ==========================================
+// 關鍵字（一句話說明）：將陣列中所有的元素連結成一個字串
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：.join([separator])
+// 1. separator 用來隔開陣列中每個元素的字串
+// 回傳值：string（回傳字串）
+// ==========================================
+
+const sixthBugTags = bugReports[5].tags;
+const joinTag = sixthBugTags.join('、');
+
+console.log(sixthBugTags); // ['Render顯示', '合併單元格', '列印']
+console.log(`標籤包含：${joinTag}`); // 標籤包含：Render顯示、合併單元格、列印
+
+// ==========================================
+// 編號：07
+// 方法名稱：Array.prototype.reduce()
+// ==========================================
+// 關鍵字（一句話說明）：將一個累加器及陣列中每項元素（由左至右）傳入回呼函式，將陣列化為單一值
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：.reduce(callback[accumulator, currentValue, currentIndex, array], initialValue)
+// 1. callback 處理陣列中每個元素的函式，可傳入四個參數：
+// - accumulator 前一個參數，如果是第一個陣列的話，值是以另外傳入或初始化的值
+// - currentValue 當前變數
+// - currentIndex 當前索引
+// - array 全部陣列（較少用）
+// 2. initialValue 初始值
+// 回傳值：結果值
+// ==========================================
+
+const unfixedCount = bugReports.reduce((acc, object) => {
+    return object.fixed === false ? acc + 1 : acc;
+}, 0);
+
+console.log(unfixedCount);
+
+// ==========================================
+// 編號：08
+// 方法名稱：Array.prototype.reduceRight()
+// ==========================================
+// 關鍵字（一句話說明）：將一個累加器及陣列中每項元素（由右至左）傳入回呼函式，將陣列化為單一值
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：除了右至左外，其他與 reduce() 相同
+// 回傳值：結果值
+// ==========================================
+
+const latestFirstSummary = bugReports.reduceRight((acc, object) => {
+    return acc + object.bugId + ' ';
+}, '');
+
+console.log(latestFirstSummary); // BUG110 BUG109 BUG108 BUG107 BUG106 BUG105 BUG104 BUG103 BUG102 BUG101 
+
+
+// ==========================================
+// 編號：09
+// 方法名稱：Array.prototype.sort()
+// ==========================================
+// 關鍵字（一句話說明）：對一個陣列的所有元素進行排序
+// 是否改變原陣列（mutate）：會
+// 參數說明（傳入的數量或用途）：.sort([compareFunction])
+// 1. compareFunction 指定一個函式來排序（如果沒有，則根據各個元素轉為字串後的每一個字元之 Unicode 編碼位置值進行排序）
+// 回傳值：array（排序後的陣列）
+// ==========================================
+
+const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+
+const sortedByPriority = bugReports.sort((a, b) => {
+    return priorityOrder[a.priority] - priorityOrder[b.priority];
+});
+
+console.log(sortedByPriority); // 按照 priority 高到低排序
+
+// ==========================================
+// 編號：10
+// 方法名稱：Array.prototype.reverse()
+// ==========================================
+// 關鍵字（一句話說明）：把陣列反轉過來
+// 是否改變原陣列（mutate）：會
+// 參數說明（傳入的數量或用途）：無
+// 回傳值：array（反轉後的陣列）
+// ==========================================
+
+const reversePriority = [...sortedByPriority].reverse();
+
+console.log(reversePriority); // 按照 priority 低到高排序
