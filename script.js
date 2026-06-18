@@ -332,3 +332,44 @@ console.log(findLastIndexof); // 4
 const lengthBugReports = bugReports.length;
 
 console.log(lengthBugReports); // 10
+
+// ==========================================
+// 編號：14
+// 方法名稱：Array.prototype.some()
+// ==========================================
+// 關鍵字（一句話說明）：陣列中至少有一個元素符合條件,就回傳 true
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：some(callbackFn, thisArg)
+// 1. callbackFn 用於對數組中的每個元素執行的函數
+// - element 正在被 some 方法測試的陣列中的元素
+// - index 這個元素在陣列中的索引
+// - array 進行 some 方法操作的那個陣列
+// 2. thisArg（Optional）this 執行時要使用的值
+// 回傳值：true / false
+// ==========================================
+
+const seriousBug = bugReports.some(bug => {
+    return bug.severity === 'Critical' && bug.fixed === false;
+});
+
+console.log(seriousBug); // true
+
+// ==========================================
+// 編號：15
+// 方法名稱：Array.prototype.every()
+// ==========================================
+// 關鍵字（一句話說明）：陣列中全部元素都要符合條件,才回傳 true
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：every(callbackFn, thisArg)
+// 1. callbackFn 用於對數組中的每個元素執行的函數
+// - element 正在被 some 方法測試的陣列中的元素
+// - index 這個元素在陣列中的索引
+// - array 進行 some 方法操作的那個陣列
+// 2. thisArg（Optional）this 執行時要使用的值
+// 回傳值：true / false
+// ==========================================
+
+const allFixed = bugReports.every(bug => {
+    return bug.fixed === true;
+});
+console.log(allFixed); // false
