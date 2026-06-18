@@ -17,7 +17,7 @@ let bugReports = [
         severity: 'Major',
         reporter: 'Janet',
         fixed: true,
-        reportedDate: '2026-06-02',
+        reportedDate: '2026-06-01',
         closedDate: '2026-06-05',
         tags: ['Render', 'UI']
     },
@@ -28,7 +28,7 @@ let bugReports = [
         severity: 'Critical',
         reporter: 'Hew',
         fixed: false,
-        reportedDate: '2026-06-03',
+        reportedDate: '2026-06-02',
         closedDate: null,
         tags: ['公式錯誤', 'SUMIF', '計算邏輯']
     },
@@ -39,7 +39,7 @@ let bugReports = [
         severity: 'Minor',
         reporter: 'Chelsea',
         fixed: true,
-        reportedDate: '2026-06-04',
+        reportedDate: '2026-06-02',
         closedDate: '2026-06-09',
         tags: ['欄位顏色', '條件式格式化', 'UI']
     },
@@ -73,7 +73,7 @@ let bugReports = [
         reporter: 'Chelsea',
         fixed: false,
         reportedDate: '2026-06-07',
-        closedDate: null,
+        closedDate: '2026-06-07',
         tags: ['公式錯誤', 'IF巢狀', '計算邏輯']
     },
     {
@@ -83,7 +83,7 @@ let bugReports = [
         severity: 'Minor',
         reporter: 'Janet',
         fixed: true,
-        reportedDate: '2026-06-08',
+        reportedDate: '2026-06-07',
         closedDate: '2026-06-10',
         tags: ['欄位顏色', '篩選器', 'UI']
     },
@@ -94,7 +94,7 @@ let bugReports = [
         severity: 'Major',
         reporter: 'Hew',
         fixed: false,
-        reportedDate: '2026-06-09',
+        reportedDate: '2026-06-07',
         closedDate: null,
         tags: ['Render顯示', '樞紐分析表', '效能']
     },
@@ -105,7 +105,7 @@ let bugReports = [
         severity: 'Major',
         reporter: 'Chelsea',
         fixed: false,
-        reportedDate: '2026-06-10',
+        reportedDate: '2026-06-08',
         closedDate: null,
         tags: ['公式錯誤', 'SUM', '資料清理']
     }
@@ -362,9 +362,9 @@ console.log(seriousBug); // true
 // 是否改變原陣列（mutate）：不會
 // 參數說明（傳入的數量或用途）：every(callbackFn, thisArg)
 // 1. callbackFn 用於對數組中的每個元素執行的函數
-// - element 正在被 some 方法測試的陣列中的元素
+// - element 正在被測試的陣列中的元素
 // - index 這個元素在陣列中的索引
-// - array 進行 some 方法操作的那個陣列
+// - array 進行操作的那個陣列
 // 2. thisArg（Optional）this 執行時要使用的值
 // 回傳值：true / false
 // ==========================================
@@ -373,3 +373,99 @@ const allFixed = bugReports.every(bug => {
     return bug.fixed === true;
 });
 console.log(allFixed); // false
+
+// ==========================================
+// 編號：16
+// 方法名稱：Array.prototype.forEach()
+// ==========================================
+// 關鍵字（一句話說明）：在提供的函數裡，每個元素都執行一次
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：forEach(callbackFn, thisArg)
+// 1. callbackFn 用於對數組中的每個元素執行的函數
+// - element 正在被測試的陣列中的元素
+// - index 這個元素在陣列中的索引
+// - array 進行操作的那個陣列
+// 2. thisArg（Optional）this 執行時要使用的值
+// 回傳值：無
+// ==========================================
+
+const allBugId = [];
+bugReports.forEach(item => allBugId.push(item.bugId));
+
+console.log(`16. forEach(): ${allBugId}`); // ['BUG102', 'BUG103', 'BUG107', 'BUG110', 'BUG101', 'BUG105', 'BUG108', 'BUG109', 'BUG104', 'BUG106']
+
+// ==========================================
+// 編號：17
+// 方法名稱：Array.prototype.map()
+// ==========================================
+// 關鍵字（一句話說明）：會透過函式內所回傳的值組合成一個新的陣列
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：map(callbackFn, thisArg)
+// 1. callbackFn 用於對數組中的每個元素執行的函數
+// - element 正在被測試的陣列中的元素
+// - index 這個元素在陣列中的索引
+// - array 進行操作的那個陣列
+// 2. thisArg（Optional）this 執行時要使用的值
+// 回傳值：array (回傳值組成的陣列)
+// ==========================================
+
+const idAndHighPriority = bugReports
+    .filter(item => item.priority === 'High')
+    .map(item => item.bugId + ':' + item.priority);
+
+console.log(idAndHighPriority); // ['BUG102:High', 'BUG103:High', 'BUG107:High', 'BUG110:High']
+
+// ==========================================
+// 編號：18
+// 方法名稱：Array.prototype.filter()
+// ==========================================
+// 關鍵字（一句話說明）：建立一個全新的陣列（淺拷貝），把符合條件的元素放進去
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：slice(start, end)
+// 1. callbackFn 用於對數組中的每個元素執行的函數
+// 2. thisArg（Optional）this 執行時要使用的值
+// 回傳值：array (回傳值組成的陣列)
+// ==========================================
+
+const completedBug = bugReports
+    .filter(item => item.closedDate !== null)
+    .map(item => item.bugId + '(' + item.priority + ')');
+
+console.log(completedBug); // ['BUG102(High)', 'BUG107(High)', 'BUG108(Medium)', 'BUG104(Low)']
+
+// ==========================================
+// 編號：19
+// 方法名稱：Array.prototype.slice()
+// ==========================================
+// 關鍵字（一句話說明）：回傳一個新陣列物件，為原陣列選擇的 start 至 end（不含 end）部分的淺拷貝
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：slice(start, end)
+// 1. start 從哪個索引值開始切
+// 2. end 在哪一個索引值結束（不包含這個數值）
+// 回傳值：array (回傳值組成的陣列)
+// ==========================================
+
+const sliceCompletedBug = bugReports
+    .filter(item => item.closedDate !== null)
+    .map(item => item.bugId + '(' + item.priority + ')')
+    .slice(0, 2);
+
+console.log(sliceCompletedBug); // ['BUG102(High)', 'BUG107(High)']
+
+// ==========================================
+// 編號：20
+// 方法名稱：Array.prototype.concat()
+// ==========================================
+// 關鍵字（一句話說明）：合併兩個或多個陣列
+// 是否改變原陣列（mutate）：不會
+// 參數說明（傳入的數量或用途）：concat(value1, value2, /* …, */ valueN)
+// value1， …，valueN 將陣列或值合併成新陣列
+// 回傳值：array (合併的陣列)
+// ==========================================
+
+const allTags = bugReports
+    .reduce((acc, item) => {
+        return acc.concat(item.tags)
+    }, []);
+    
+console.log(allTags) // 全部的 tags
